@@ -1,8 +1,6 @@
 # Using a compact OS
 FROM daocloud.io/nginx:1.11-alpine
 FROM daocloud.io/php:5.6-apache
-COPY config/php.ini /usr/local/etc/php
-COPY src/ /var/www/html/
 
 MAINTAINER Golfen Guo <golfen.guo@daocloud.io>
 

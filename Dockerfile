@@ -9,4 +9,4 @@ MAINTAINER Golfen Guo <golfen.guo@daocloud.io>
 EXPOSE 80
 
 # Start Nginx and keep it running background and start php
-CMD ["nginx", "-g", "daemon off;"]
+#CMD ["nginx", "-g", "daemon off;"]

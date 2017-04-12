@@ -1,6 +1,7 @@
 # Using a compact OS
-FROM daocloud.io/nginx:1.11-alpine
+#FROM daocloud.io/nginx:1.11-alpine
 #FROM debian:jessie
+FROM local/centos-httpd
 
 MAINTAINER Golfen Guo <golfen.guo@daocloud.io>
 
@@ -10,3 +11,4 @@ EXPOSE 80
 
 # Start Nginx and keep it running background and start php
 #CMD ["nginx", "-g", "daemon off;"]
+CMD httpd

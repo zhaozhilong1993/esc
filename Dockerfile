@@ -1,17 +1,19 @@
 # Using a compact OS
 #FROM daocloud.io/nginx:1.11-alpine
 #FROM debian:jessie
-FROM local/centos-lamp-2
+FROM local/centos-lamp-3
 
 MAINTAINER Golfen Guo <golfen.guo@daocloud.io>
 
 # Add 2048 stuff into Nginx server
 COPY . /var/www/html/
-RUN mkdir /var/www/html/temp/
+
+COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+COPY start_process.sh /usr/bin/
+
+RUN mkdir -p /var/www/html/temp/caches
 RUN chown apache.apache -R /var/www/html/
 
-EXPOSE 80
-
-# Start Nginx and keep it running background and start php
-#CMD ["nginx", "-g", "daemon off;"]
-RUN httpd
+ENTRYPOINT start_process.sh && /bin/bash
+EXPOSE 22 80
+# CMD ["/usr/bin/supervisord"]
